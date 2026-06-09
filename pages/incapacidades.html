@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incapacidades - Gestión de Incapacidades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/incapacidades.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>🏥 Gestión de Incapacidades</h1>
+                <a href="dashboard.html">← Volver al Dashboard</a>
+            </div>
+            <button class="btn btn-primary" onclick="mostrarFormulario()">+ Nueva Incapacidad</button>
+        </div>
+
+        <div id="mensaje" class="mensaje"></div>
+
+        <div class="search-box">
+            <input type="number" id="buscarEmpleado" placeholder="Buscar por empleado ID...">
+            <input type="date" id="buscarFechaInicio" placeholder="Fecha inicio">
+            <input type="date" id="buscarFechaFin" placeholder="Fecha fin">
+            <select id="buscarEstado">
+                <option value="">Todos los estados</option>
+                <option value="registrada">Registrada</option>
+                <option value="en_revision">En revisión</option>
+                <option value="aprobada">Aprobada</option>
+                <option value="rechazada">Rechazada</option>
+                <option value="finalizada">Finalizada</option>
+            </select>
+            <select id="buscarTipo">
+                <option value="">Todos los tipos</option>
+                <option value="enfermedad_general">Enfermedad general</option>
+                <option value="accidente_laboral">Accidente laboral</option>
+                <option value="licencia_medica">Licencia médica</option>
+                <option value="incapacidad_temporal">Incapacidad temporal</option>
+            </select>
+            <button class="btn btn-primary" onclick="buscarIncapacidades()">Buscar</button>
+            <button class="btn btn-success" onclick="cargarIncapacidades()">🔄 Actualizar</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Empleado</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Días</th>
+                    <th>Tipo</th>
+                    <th>Entidad Médica</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaIncapacidades">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitulo">Nueva Incapacidad</h2>
+            <form id="formIncapacidad">
+                <input type="hidden" id="incapacidadId">
+                
+                <div class="form-group">
+                    <label>Empleado ID:</label>
+                    <input type="number" id="empleado_id" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Fecha Inicio:</label>
+                    <input type="date" id="fecha_inicio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Fecha Fin:</label>
+                    <input type="date" id="fecha_fin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select id="tipo" required>
+                        <option value="enfermedad_general">Enfermedad general</option>
+                        <option value="accidente_laboral">Accidente laboral</option>
+                        <option value="licencia_medica">Licencia médica</option>
+                        <option value="incapacidad_temporal">Incapacidad temporal</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Diagnóstico:</label>
+                    <textarea id="diagnostico_general" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Entidad Médica:</label>
+                    <input type="text" id="entidad_medica" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Observaciones:</label>
+                    <textarea id="observaciones" rows="2"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <button type="button" class="btn btn-danger" onclick="cerrarModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <div id="modalEstado" class="modal">
+    <div class="modal-content">
+        <h2>Cambiar Estado</h2>
+        <form id="formEstado">
+            <input type="hidden" id="estadoIncapacidadId">
+            
+            <div class="form-group">
+                <label>Nuevo Estado:</label>
+                <select id="nuevoEstado" required>
+                    <option value="registrada">Registrada</option>
+                    <option value="en_revision">En revisión</option>
+                    <option value="aprobada">Aprobada</option>
+                    <option value="rechazada">Rechazada</option>
+                    <option value="finalizada">Finalizada</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" class="btn btn-danger" onclick="cerrarModalEstado()">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/incapacidades.js"></script>
+</body>
+</html>

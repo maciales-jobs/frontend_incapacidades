@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestión de Incapacidades</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <div>
+                <h1>Corporate Solutions</h1>
+                <p class="user-info">Bienvenido, <span id="nombreUsuario"></span> (<span id="rolUsuario"></span>)</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+        
+        <div class="modules">
+            <div class="module-card" onclick="location.href='empleados.html'">
+                <h3>👥 Empleados</h3>
+                <p>Gestionar información de empleados</p>
+            </div>
+            
+            <div class="module-card" onclick="location.href='incapacidades.html'">
+                <h3>🏥 Incapacidades</h3>
+                <p>Registrar y administrar incapacidades médicas</p>
+            </div>
+            
+            <div class="module-card" onclick="location.href='seguimiento.html'">
+                <h3>📊 Seguimiento</h3>
+                <p>Control administrativo y trazabilidad</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '../index.html';
+        }
+        
+        document.getElementById('nombreUsuario').textContent = localStorage.getItem('nombre') || 'Usuario';
+        document.getElementById('rolUsuario').textContent = localStorage.getItem('rol') || 'Rol';
+        
+        async function logout() {
+            try {
+                await fetch(`${API_URLS.auth}/logout`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+            } catch (e) {
+                console.log('Error en logout:', e);
+            }
+            
+            localStorage.clear();
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>

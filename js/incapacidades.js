@@ -37,7 +37,7 @@ function mostrarIncapacidades(incapacidades) {
             <td><span class="estado-${inc.estado}">${inc.estado}</span></td>
             <td>
                 <button class="btn btn-warning" onclick="editarIncapacidad(${inc.id})">Editar</button>
-                <button class="btn btn-info" onclick="cambiarEstado(${inc.id})">Estado</button>
+                <button class="btn btn-info" onclick="cambiarEstado(${inc.id})">Editar estado</button>
                 <button class="btn btn-primary" onclick="finalizarIncapacidad(${inc.id})">Finalizar</button>
             </td>
         `;

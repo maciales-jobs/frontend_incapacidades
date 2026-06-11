@@ -1,5 +1,5 @@
 .container {
-    max-width: 1200px;
+    max-width: 1400px;  
     margin: 0 auto;
     padding: 20px;
     animation: fadeIn 0.5s ease;
@@ -28,11 +28,11 @@
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 8px 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -57,10 +57,16 @@
     color: white;
 }
 
+.btn-info {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+}
+
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
+
 
 table {
     width: 100%;
@@ -70,17 +76,56 @@ table {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     animation: fadeInUp 0.6s ease;
+    font-size: 13px;  
 }
 
 th, td {
-    padding: 14px;
+    padding: 10px 8px;
     text-align: left;
+    vertical-align: middle;
 }
 
 th {
     background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
     color: white;
     font-weight: 600;
+    white-space: nowrap;  
+    font-size: 12px;
+}
+
+ 
+th:nth-child(1), td:nth-child(1) { width: 35px; }     
+th:nth-child(2), td:nth-child(2) { width: 65px; }    
+th:nth-child(3), td:nth-child(3) { width: 85px; }    
+th:nth-child(4), td:nth-child(4) { width: 85px; }    
+th:nth-child(5), td:nth-child(5) { width: 40px; }     
+th:nth-child(6), td:nth-child(6) { width: 100px; }   
+th:nth-child(7), td:nth-child(7) { width: 140px; }    
+th:nth-child(8), td:nth-child(8) { width: 110px; } 
+th:nth-child(9), td:nth-child(9) { width: 130px; }   
+th:nth-child(10), td:nth-child(10) { width: 85px; }  
+th:nth-child(11), td:nth-child(11) { width: 180px; } 
+
+td:nth-child(7), td:nth-child(9) {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+
+td:nth-child(11) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+}
+
+td:nth-child(11) .btn {
+    padding: 5px 10px;
+    font-size: 11px;
+    min-width: 70px;
 }
 
 tr {
@@ -89,7 +134,7 @@ tr {
 
 tr:hover {
     background-color: #f8f9fa;
-    transform: scale(1.01);
+    transform: scale(1.005);
 }
 
 .search-box {
@@ -97,16 +142,20 @@ tr:hover {
     gap: 10px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .search-box input,
 .search-box select {
     flex: 1;
-    min-width: 150px;
-    padding: 10px;
+    min-width: 140px;
+    padding: 8px;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
     transition: all 0.3s ease;
 }
 
@@ -128,6 +177,7 @@ tr:hover {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
+    z-index: 1000;
 }
 
 .modal-content {
@@ -216,44 +266,49 @@ tr:hover {
 .estado-registrada { 
     background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%); 
     color: white; 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 12px;
+    padding: 4px 10px; 
+    border-radius: 15px; 
+    font-size: 11px;
     font-weight: 600;
+    display: inline-block;
 }
 
 .estado-en_revision { 
     background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); 
     color: white; 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 12px;
+    padding: 4px 10px; 
+    border-radius: 15px; 
+    font-size: 11px;
     font-weight: 600;
+    display: inline-block;
 }
 
 .estado-aprobada { 
     background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); 
     color: white; 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 12px;
+    padding: 4px 10px; 
+    border-radius: 15px; 
+    font-size: 11px;
     font-weight: 600;
+    display: inline-block;
 }
 
 .estado-rechazada { 
     background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); 
     color: white; 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 12px;
+    padding: 4px 10px; 
+    border-radius: 15px; 
+    font-size: 11px;
     font-weight: 600;
+    display: inline-block;
 }
 
 .estado-finalizada { 
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); 
     color: white; 
-    padding: 6px 12px; 
-    border-radius: 20px; 
-    font-size: 12px;
+    padding: 4px 10px; 
+    border-radius: 15px; 
+    font-size: 11px;
     font-weight: 600;
+    display: inline-block;
 }

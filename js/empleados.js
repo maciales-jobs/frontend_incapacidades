@@ -35,6 +35,7 @@ function mostrarEmpleados(empleados) {
             <td>${emp.telefono}</td>
             <td>${emp.cargo}</td>
             <td>${emp.area}</td>
+            <td>${emp.fecha_ingreso}</td>    
             <td>${emp.estado}</td>
             <td>
                 <button class="btn btn-warning" onclick="editarEmpleado(${emp.id})">Editar</button>

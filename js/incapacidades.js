@@ -33,7 +33,9 @@ function mostrarIncapacidades(incapacidades) {
             <td>${inc.fecha_fin}</td>
             <td>${inc.dias_incapacidad}</td>
             <td>${inc.tipo}</td>
+            <td>${inc.diagnostico_general || '-'}</td>     
             <td>${inc.entidad_medica}</td>
+            <td>${inc.observaciones || '-'}</td>            
             <td><span class="estado-${inc.estado}">${inc.estado}</span></td>
             <td>
                 <button class="btn btn-warning" onclick="editarIncapacidad(${inc.id})">Editar</button>
